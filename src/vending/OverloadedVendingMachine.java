@@ -1,8 +1,8 @@
 package vending;
-import vending.machine.SoftDrink;
-import vending.machine.SaltySnack;
-import vending.machine.Chocolate;
-import vending.machine.Product;
+import vending.product.SoftDrink;
+import vending.product.SaltySnack;
+import vending.product.Chocolate;
+import vending.product.Product;
 public class OverloadedVendingMachine {
     void buy(SoftDrink softdrink){
         System.out.println("Buy softdrink");
@@ -15,5 +15,8 @@ public class OverloadedVendingMachine {
     }
     void buy(Product product){
         System.out.println("Buy product");
+    }
+    public OverloadedVendingMachine(int softDrinkQty, int saltySnacksQty, int chocolatesQty){
+
     }
 }
