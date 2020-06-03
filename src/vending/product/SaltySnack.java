@@ -1,7 +1,7 @@
 package vending.product;
 
 public class SaltySnack {
-    public int getSaltySnack(){
-        return 1;
+    public String description(){
+        return "This is a saltySnack";
     }
 }

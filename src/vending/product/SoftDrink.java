@@ -2,8 +2,7 @@ package vending.product;
 
 
 public class SoftDrink{
-    public int getSoftDrink(){
-        return 1;
+    public String description(){
+        return "This is a softDrink";
     }
-
 }
