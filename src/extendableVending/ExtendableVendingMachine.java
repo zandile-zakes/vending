@@ -6,6 +6,9 @@ import vending.product.SaltySnack;
 import vending.product.SoftDrink;
 
 public class ExtendableVendingMachine extends Product {
+    private int softDink;
+    private int saltSnack;
+    private int chocolate;
     public void buy(Product product){
         Object softDrink = new SoftDrink();
         if (softDrink instanceof Product) {
@@ -28,5 +31,30 @@ public class ExtendableVendingMachine extends Product {
             System.out.println("No chocolate has been bought");
         }
 
+    }
+    public ExtendableVendingMachine(int softDrinkLvl, int saltySnackLvl, int chocolateLvl){
+        softDink = softDrinkLvl;
+        saltSnack = saltySnackLvl;
+        chocolate = chocolateLvl;
+    }
+    public void addStock(Product product){
+        softDink += 3;
+        saltSnack += 3;
+        chocolate += 3;
+    }
+    public int getStock(Product product){
+        return softDink + saltSnack + chocolate;
+    }
+
+    public static void main(String[] args) {
+        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(3,3,3);
+        vendingMachine.addStock(new SoftDrink());
+        vendingMachine.addStock(new SoftDrink());
+        vendingMachine.addStock(new SoftDrink());
+        vendingMachine.addStock(new Product());
+        int totalStockLevel = vendingMachine.getStock(new Product());
+        System.out.println(vendingMachine.getStock(new SoftDrink()));
+        System.out.println(vendingMachine.getStock(new SaltySnack()));
+        System.out.println(vendingMachine.getStock(new Chocolate()));
     }
 }
