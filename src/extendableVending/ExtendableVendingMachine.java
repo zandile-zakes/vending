@@ -6,44 +6,53 @@ import vending.product.SaltySnack;
 import vending.product.SoftDrink;
 
 public class ExtendableVendingMachine extends Product {
-    private int softDink;
-    private int saltSnack;
-    private int chocolate;
+    private int softDinkQty;
+    private int saltSnackQty;
+    private int chocolateQty;
     public void buy(Product product){
-        Object softDrink = new SoftDrink();
-        if (softDrink instanceof Product) {
-            System.out.println("SoftDrink has been bought");
-        }else {
-            System.out.println("No softDrink has been bought");
-        }
-
-        Object saltySnack = new SaltySnack();
-        if (saltySnack instanceof Product){
-            System.out.println("SaltySnack has been bought");
-        }else {
-            System.out.println("No saltySnack has been bought");
-        }
-
-        Object chocolate = new Chocolate();
-        if (chocolate instanceof Product) {
-            System.out.println("Chocolate has been bought");
-        }else{
-            System.out.println("No chocolate has been bought");
+        if (product instanceof SoftDrink){
+            if (softDinkQty > 0){
+                System.out.println("SoftDrink is available");
+                softDinkQty--;
+            }else {
+                System.out.println("SoftDrink is not available");
+            }
+        }else if (product instanceof SaltySnack){
+            if(saltSnackQty > 0){
+                System.out.println("SaltySnack is available");
+                saltSnackQty--;
+            }else {
+                System.out.println("SaltySnack is not available");
+            }
+        }else if (product instanceof  Chocolate){
+            if (chocolateQty > 0){
+                System.out.println("Chocolate is available");
+            }else {
+                System.out.println("Chocolate is no available");
+            }
         }
 
     }
     public ExtendableVendingMachine(int softDrinkLvl, int saltySnackLvl, int chocolateLvl){
-        softDink = softDrinkLvl;
-        saltSnack = saltySnackLvl;
-        chocolate = chocolateLvl;
+        softDinkQty = softDrinkLvl;
+        saltSnackQty = saltySnackLvl;
+        chocolateQty = chocolateLvl;
+        System.out.println("This is my constructor");
     }
     public void addStock(Product product){
-        softDink += 3;
-        saltSnack += 3;
-        chocolate += 3;
+        if (softDinkQty < 0){
+            System.out.println("Add softDrink");
+            softDinkQty += 3;
+        }else if (saltSnackQty < 0){
+            System.out.println("Add saltySnack");
+            saltSnackQty += 3;
+        }else if (chocolateQty < 0){
+            System.out.println("Add chocolate");
+            chocolateQty += 3;
+        }
     }
     public int getStock(Product product){
-        return softDink + saltSnack + chocolate;
+        return softDinkQty + saltSnackQty + chocolateQty;
     }
 
     public static void main(String[] args) {
